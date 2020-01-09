@@ -1,8 +1,8 @@
-# Cloud-native applications ☁️ 📦 
+# DevOps & Kubernetes ☁️ 📦 
 
 Fabrikam Medical Conferences provides conference web site services, tailored to the medical community. Their business has grown and the management of many instances of the code base and change cycle per tenant has gotten out of control.
 
-The goal of this workshop is to help them build a proof of concept (PoC) that will migrate their code to a more manageable process that involves containerization of tenant code, a better DevOps workflow, and a simple lift-and-shift story for their database backend.
+The goal of this workshop is to help them build a proof of concept (POC) that will migrate their code to a more manageable process that involves containerization of tenant code, a better DevOps workflow, and a simple lift-and-shift story for their database backend.
 
 ## About the workshop
 
@@ -28,7 +28,7 @@ At the end of this lab, you will be better able to build and deploy containerize
 
 ## References
 
-This workshop is based on the material from [Microsoft's Cloud Workshop (MCW) project](https://github.com/Microsoft/MCW).
+This workshop is based on the material from [Microsoft's Cloud Workshop (MCW)](https://github.com/Microsoft/MCW) project [cloud-native applications](https://github.com/microsoft/MCW-Cloud-native-applications).
 
 ## About Redeploy
 
