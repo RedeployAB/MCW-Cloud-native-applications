@@ -1,4 +1,4 @@
-# ☁️ 📦 Cloud-native applications
+# Cloud-native applications ☁️ 📦 
 
 Fabrikam Medical Conferences provides conference web site services, tailored to the medical community. Their business has grown and the management of many instances of the code base and change cycle per tenant has gotten out of control.
 
