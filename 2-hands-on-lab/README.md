@@ -10,7 +10,8 @@ To prepare your environment for the lab, start by going through the [setup guide
 
 ## Performing the lab
 
-Depending on your background, there are two different labs that you can follow:
+After you have prepared your environment for the hands-on lab you can continue
+with performing the lab. Depending on your background, there are two different labs that you can follow:
 
 * [Developer lab](developer-lab.md)
 * [Infrastructure lab](infrastructure-lab.md)
