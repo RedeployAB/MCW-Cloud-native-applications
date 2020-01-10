@@ -375,7 +375,7 @@ FabMedical has provided starter files for you. They have taken a copy of the web
 16. Enter the required information using the service principal information you
     created earlier.
 
-    - **Environment**: Azure Container Registry
+    - **Registry type**: Azure Container Registry
 
     - **Connection name**: Fabmedical ACR
 
@@ -465,7 +465,7 @@ VM.
    > **Note**: If you don't have a cloud shell available, refer back to [Task 1: Setup Azure Cloud Shell](#task-1-setup-azure-cloud-shell).
 
    ```bash
-   az vm show -d -g fabmedical-[SUFFIX] -n fabmedical-[SHORTssh  SUFFIX] --query publicIps -o tsv
+   az vm show -d -g fabmedical-[SUFFIX] -n fabmedical-[SHORT SUFFIX] --query publicIps -o tsv
    ```
 
    Example:
