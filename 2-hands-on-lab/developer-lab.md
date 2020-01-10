@@ -4,41 +4,40 @@
 
 <!-- TOC -->
 
-- [Cloud-native applications - Developer edition hands-on lab step-by-step](#cloud-native-applications---developer-edition-hands-on-lab-step-by-step)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Overview](#overview)
-  - [Solution architecture](#solution-architecture)
-  - [Requirements](#requirements)
-  - [Exercise 1: Create and run a Docker application](#exercise-1-create-and-run-a-docker-application)
-    - [Task 1: Test the application](#task-1-test-the-application)
-    - [Task 2: Browsing to the web application](#task-2-browsing-to-the-web-application)
-    - [Task 3: Create a Dockerfile](#task-3-create-a-dockerfile)
-    - [Task 4: Create Docker images](#task-4-create-docker-images)
-    - [Task 5: Run a containerized application](#task-5-run-a-containerized-application)
-    - [Task 6: Setup environment variables](#task-6-setup-environment-variables)
-    - [Task 7: Run several containers with Docker compose](#task-7-run-several-containers-with-docker-compose)
-    - [Task 8: Push images to Azure Container Registry](#task-8-push-images-to-azure-container-registry)
-    - [Task 9: Setup CI Pipeline to Push Images](#task-9-setup-ci-pipeline-to-push-images)
-  - [Exercise 2: Deploy the solution to Azure Kubernetes Service](#exercise-2-deploy-the-solution-to-azure-kubernetes-service)
-    - [Task 1: Tunnel into the Azure Kubernetes Service cluster](#task-1-tunnel-into-the-azure-kubernetes-service-cluster)
-    - [Task 2: Deploy a service using the Kubernetes management dashboard](#task-2-deploy-a-service-using-the-kubernetes-management-dashboard)
-    - [Task 3: Deploy a service using kubectl](#task-3-deploy-a-service-using-kubectl)
-    - [Task 4: Deploy a service using a Helm chart](#task-4-deploy-a-service-using-a-helm-chart)
-    - [Task 5: Initialize database with a Kubernetes Job](#task-5-initialize-database-with-a-kubernetes-job)
-    - [Task 6: Test the application in a browser](#task-6-test-the-application-in-a-browser)
-    - [Task 7: Configure Continuous Delivery to the Kubernetes Cluster](#task-7-configure-continuous-delivery-to-the-kubernetes-cluster)
-    - [Task 8: Review Azure Monitor for Containers](#task-8-review-azure-monitor-for-containers)
-  - [Exercise 3: Scale the application and test HA](#exercise-3-scale-the-application-and-test-ha)
-    - [Task 1: Increase service instances from the Kubernetes dashboard](#task-1-increase-service-instances-from-the-kubernetes-dashboard)
-    - [Task 2: Increase service instances beyond available resources](#task-2-increase-service-instances-beyond-available-resources)
-    - [Task 3: Restart containers and test HA](#task-3-restart-containers-and-test-ha)
-  - [Exercise 4: Working with services and routing application traffic](#exercise-4-working-with-services-and-routing-application-traffic)
-    - [Task 1: Scale a service without port constraints](#task-1-scale-a-service-without-port-constraints)
-    - [Task 2: Update an external service to support dynamic discovery with a load balancer](#task-2-update-an-external-service-to-support-dynamic-discovery-with-a-load-balancer)
-    - [Task 3: Adjust CPU constraints to improve scale](#task-3-adjust-cpu-constraints-to-improve-scale)
-    - [Task 4: Perform a rolling update](#task-4-perform-a-rolling-update)
-    - [Task 5: Configure Kubernetes Ingress](#task-5-configure-kubernetes-ingress)
-  - [After the hands-on lab](#after-the-hands-on-lab)
+- [Abstract and learning objectives](#abstract-and-learning-objectives)
+- [Overview](#overview)
+- [Solution architecture](#solution-architecture)
+- [Requirements](#requirements)
+- [Exercise 1: Create and run a Docker application](#exercise-1-create-and-run-a-docker-application)
+  - [Task 1: Test the application](#task-1-test-the-application)
+  - [Task 2: Browsing to the web application](#task-2-browsing-to-the-web-application)
+  - [Task 3: Create a Dockerfile](#task-3-create-a-dockerfile)
+  - [Task 4: Create Docker images](#task-4-create-docker-images)
+  - [Task 5: Run a containerized application](#task-5-run-a-containerized-application)
+  - [Task 6: Setup environment variables](#task-6-setup-environment-variables)
+  - [Task 7: Run several containers with Docker compose](#task-7-run-several-containers-with-docker-compose)
+  - [Task 8: Push images to Azure Container Registry](#task-8-push-images-to-azure-container-registry)
+  - [Task 9: Setup CI Pipeline to Push Images](#task-9-setup-ci-pipeline-to-push-images)
+- [Exercise 2: Deploy the solution to Azure Kubernetes Service](#exercise-2-deploy-the-solution-to-azure-kubernetes-service)
+  - [Task 1: Tunnel into the Azure Kubernetes Service cluster](#task-1-tunnel-into-the-azure-kubernetes-service-cluster)
+  - [Task 2: Deploy a service using the Kubernetes management dashboard](#task-2-deploy-a-service-using-the-kubernetes-management-dashboard)
+  - [Task 3: Deploy a service using kubectl](#task-3-deploy-a-service-using-kubectl)
+  - [Task 4: Deploy a service using a Helm chart](#task-4-deploy-a-service-using-a-helm-chart)
+  - [Task 5: Initialize database with a Kubernetes Job](#task-5-initialize-database-with-a-kubernetes-job)
+  - [Task 6: Test the application in a browser](#task-6-test-the-application-in-a-browser)
+  - [Task 7: Configure Continuous Delivery to the Kubernetes Cluster](#task-7-configure-continuous-delivery-to-the-kubernetes-cluster)
+  - [Task 8: Review Azure Monitor for Containers](#task-8-review-azure-monitor-for-containers)
+- [Exercise 3: Scale the application and test HA](#exercise-3-scale-the-application-and-test-ha)
+  - [Task 1: Increase service instances from the Kubernetes dashboard](#task-1-increase-service-instances-from-the-kubernetes-dashboard)
+  - [Task 2: Increase service instances beyond available resources](#task-2-increase-service-instances-beyond-available-resources)
+  - [Task 3: Restart containers and test HA](#task-3-restart-containers-and-test-ha)
+- [Exercise 4: Working with services and routing application traffic](#exercise-4-working-with-services-and-routing-application-traffic)
+  - [Task 1: Scale a service without port constraints](#task-1-scale-a-service-without-port-constraints)
+  - [Task 2: Update an external service to support dynamic discovery with a load balancer](#task-2-update-an-external-service-to-support-dynamic-discovery-with-a-load-balancer)
+  - [Task 3: Adjust CPU constraints to improve scale](#task-3-adjust-cpu-constraints-to-improve-scale)
+  - [Task 4: Perform a rolling update](#task-4-perform-a-rolling-update)
+  - [Task 5: Configure Kubernetes Ingress](#task-5-configure-kubernetes-ingress)
+- [After the hands-on lab](#after-the-hands-on-lab)
 
 <!-- /TOC -->
 
@@ -283,15 +282,15 @@ The purpose of this task is to make sure you can run the application successfull
 
 18. Leave the application running for the next task.
 
-19. If you received a JSON response to the /speakers content request and an HTML response from the web application, your environment is working as expected.
+19. If you received a JSON response to the `/speakers` content request and an HTML response from the web application, your environment is working as expected.
 
 ### Task 2: Browsing to the web application
 
 In this task, you will browse to the web application for testing.
 
-1. From the Azure portal select the resource group you created named fabmedical-SUFFIX.
+1. From the Azure portal select the resource group you created named `fabmedical-SUFFIX`.
 
-2. Select the build agent VM named fabmedical-SUFFIX from your list of available resources.
+2. Select the build agent VM named `fabmedical-SUFFIX` from your list of available resources.
 
    ![In this screenshot of your list of available resources, the first item is selected, which has the following values for Name, Type, and Location: fabmedical-soll (a red arrows points to this name), Virtual machine, and East US 2.](media/image54.png)
 
@@ -318,7 +317,7 @@ In this task, you will browse to the web application for testing.
 
 ### Task 3: Create a Dockerfile
 
-In this task, you will create a new Dockerfile that will be used to run the API application as a containerized application.
+In this task, you will create a new `Dockerfile` that will be used to run the API application as a containerized application.
 
 > **Note**: You will be working in a Linux VM without friendly editor tools. You
 > must follow the steps very carefully to work with Vim for a few editing
@@ -333,7 +332,7 @@ In this task, you will create a new Dockerfile that will be used to run the API 
 
    ![In this screenshot of the console window, ll has been typed and run at the command prompt. The files in the folder are listed in the window. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](media/image55.png)
 
-2. Create a new file named "Dockerfile" and note the casing in the name. Use the
+2. Create a new file named `Dockerfile` and note the casing in the name. Use the
    following Vim command to create a new file. The cloud shell window should
    look as shown in the following screenshot.
 
@@ -347,7 +346,7 @@ In this task, you will create a new Dockerfile that will be used to run the API 
 
    ![-- INSERT -- appears at the bottom of the Dockerfile window.](media/image57.png)
 
-4. Type the following into the file. These statements produce a Dockerfile that describes the following:
+4. Type the following into the file. These statements produce a `Dockerfile` that describes the following:
 
    - The base stage includes environment setup which we expect to change very rarely, if at all.
 
@@ -608,7 +607,7 @@ In this task, you will configure the "web" container to communicate with the API
    const contentApiUrl = process.env.CONTENT_API_URL || "http://localhost:3001";
    ```
 
-5. Open the Dockerfile for editing using Vim and press the "i" key to go into edit mode.
+5. Open the `Dockerfile` for editing using Vim and press the "i" key to go into edit mode.
 
    ```bash
    vi Dockerfile
@@ -681,145 +680,6 @@ In this task, you will configure the "web" container to communicate with the API
     ```
 
     Enter credentials if prompted.
-
-### Task 7: Run several containers with Docker compose
-
-Managing several containers with all their command line options can become
-difficult as the solution grows. `docker-compose` allows us to declare options
-for several containers and run them together.
-
-1. First, cleanup the existing containers.
-
-   ```bash
-   docker container stop web && docker container rm web
-   docker container stop api && docker container rm api
-   docker container stop mongo && docker container rm mongo
-   ```
-
-2. Navigate to your home directory (where you checked out the content repositories) and create a docker compose file.
-
-   ```bash
-   cd ~
-   vi docker-compose.yml
-   <i>
-   ```
-
-   Type the following as the contents of `docker-compose.yml`:
-
-   ```yaml
-   version: "3.4"
-
-   services:
-     mongo:
-       image: mongo
-       restart: always
-
-     api:
-       build: ./content-api
-       image: content-api
-       depends_on:
-         - mongo
-       environment:
-         MONGODB_CONNECTION: mongodb://mongo:27017/contentdb
-
-     web:
-       build: ./content-web
-       image: content-web
-       depends_on:
-         - api
-       environment:
-         CONTENT_API_URL: http://api:3001
-       ports:
-         - "3000:3000"
-   ```
-
-   Press the Escape key and type ":wq" and then press the Enter key to save and close the file.
-
-   ```text
-   <Esc>
-   :wq
-   <Enter>
-   ```
-
-3. Start the applications with the `up` command.
-
-   ```bash
-   docker-compose -f docker-compose.yml -p fabmedical up -d
-   ```
-
-   ![This screenshot of the console window shows the creation of the network and three containers: mongo, api and web.](media/Ex1-Task6.17.png)
-
-4. Visit the website in the browser; notice that we no longer have any data on the speakers or sessions pages.
-
-   ![Browser view of the web site.](media/Ex1-Task6.18.png)
-
-5. We stopped and removed our previous mongodb container; all the data contained in it has been removed. Docker compose has created a new, empty mongodb instance that must be reinitialized. If we care to persist our data between container instances, docker has several mechanisms to do so. First, we will update our compose file to persist mongodb data to a directory on the build agent.
-
-   ```bash
-   mkdir data
-   vi docker-compose.yml
-   ```
-
-   Update the mongo service to mount the local data directory onto to the `/data/db` volume in the docker container.
-
-   ```yaml
-   mongo:
-     image: mongo
-     restart: always
-     volumes:
-       - ./data:/data/db
-   ```
-
-   The result should look similar to the following screenshot:
-
-   ![This screenshot of the VIM edit window shows the resulting compose file.](media/Ex1-Task6.19.png)
-
-6. Next, we will add a second file to our composition so that we can initialize the mongodb data when needed.
-
-   ```bash
-   vi docker-compose.init.yml
-   ```
-
-   Add the following as the content:
-
-   ```yaml
-   version: "3.4"
-
-   services:
-     init:
-       build: ./content-init
-       image: content-init
-       depends_on:
-         - mongo
-       environment:
-         MONGODB_CONNECTION: mongodb://mongo:27017/contentdb
-   ```
-
-7. To reconfigure the mongodb volume, we need to bring down the mongodb service first.
-
-   ```bash
-   docker-compose -f docker-compose.yml -p fabmedical down
-   ```
-
-   ![This screenshot of the console window shows the running containers stopping.](media/Ex1-Task6.21.png)
-
-8. Now run `up` again with both files to update the mongodb configuration and run the initialization script.
-
-   ```bash
-   docker-compose -f docker-compose.yml -f docker-compose.init.yml -p fabmedical up -d
-   ```
-
-9. Check the data folder to see that mongodb is now writing data files to the host.
-
-   ```bash
-   ls ./data/
-   ```
-
-   ![This screenshot of the console window shows the output of the data folder.](media/hol-2019-10-12_09-42-16.png)
-
-10. Check the results in the browser. The speaker and session data are now available.
-
-    ![A screenshot of the sessions page.](media/Ex1-Task6.24.png)
 
 ### Task 8: Push images to Azure Container Registry
 
@@ -1533,7 +1393,7 @@ In this task, deploy the web service using a helm chart.
 
 In this task, you will use a Kubernetes Job to run a container that is meant to execute a task and terminate, rather than run all the time.
 
-1. Create a text file called init.job.yml using the Azure Cloud Shell Editor.
+1. Create a text file called `init.job.yml` using the Azure Cloud Shell Editor.
 
    ```bash
    code init.job.yml
@@ -1720,7 +1580,7 @@ In this task, you will use Azure DevOps to automate the process for deploying th
 
 In this task, you will access and review the various logs and dashboards made available by Azure Monitor for Containers.
 
-1. From the Azure Portal, select the resource group you created named fabmedical-SUFFIX, and then select your AKS cluster.
+1. From the Azure Portal, select the resource group you created named `fabmedical-SUFFIX`, and then select your AKS cluster.
 
    ![In this screenshot, the resource group was previously selected and the AKS cluster is selected.](media/Ex2-Task8.1.png)
 
