@@ -4,19 +4,18 @@
 
 <!-- TOC -->
 
-- [Cloud-native applications before the hands-on lab setup guide](#cloud-native-applications-before-the-hands-on-lab-setup-guide)
-  - [Requirements](#requirements)
-  - [Before the hands-on lab](#before-the-hands-on-lab)
-    - [Task 1: Setup Azure Cloud Shell](#task-1-setup-azure-cloud-shell)
-    - [Task 2: Download Starter Files](#task-2-download-starter-files)
-    - [Task 3: Resource Group](#task-3-resource-group)
-    - [Task 4: Create an SSH key](#task-4-create-an-ssh-key)
-    - [Task 5: Create a Service Principal](#task-5-create-a-service-principal)
-    - [Task 6: Deploy ARM Template](#task-6-deploy-arm-template)
-    - [Task 7: Setup Azure DevOps project](#task-7-setup-azure-devops-project)
-    - [Task 8: Connect securely to the build agent](#task-8-connect-securely-to-the-build-agent)
-    - [Task 9: Complete the build agent setup](#task-9-complete-the-build-agent-setup)
-    - [Task 10: Clone Repositories to the Build Agent](#task-10-clone-repositories-to-the-build-agent)
+- [Requirements](#requirements)
+- [Before the hands-on lab](#before-the-hands-on-lab)
+  - [Task 1: Setup Azure Cloud Shell](#task-1-setup-azure-cloud-shell)
+  - [Task 2: Download Starter Files](#task-2-download-starter-files)
+  - [Task 3: Resource Group](#task-3-resource-group)
+  - [Task 4: Create an SSH key](#task-4-create-an-ssh-key)
+  - [Task 5: Create a Service Principal](#task-5-create-a-service-principal)
+  - [Task 6: Deploy ARM Template](#task-6-deploy-arm-template)
+  - [Task 7: Setup Azure DevOps project](#task-7-setup-azure-devops-project)
+  - [Task 8: Connect securely to the build agent](#task-8-connect-securely-to-the-build-agent)
+  - [Task 9: Complete the build agent setup](#task-9-complete-the-build-agent-setup)
+  - [Task 10: Clone Repositories to the Build Agent](#task-10-clone-repositories-to-the-build-agent)
 
 <!-- /TOC -->
 
@@ -139,7 +138,7 @@ You create VMs during the upcoming exercises. In this section, you create an SSH
    > **Note**: If you don't have a cloud shell available, refer back to [Task 1: Setup Azure Cloud Shell](#task-1-setup-azure-cloud-shell).
 
    ```bash
-   mkdir .ssh
+   mkdir ~/.ssh
    ```
 
 2. From the cloud shell command line, enter the following command to generate an SSH key pair. You can replace "admin" with your preferred name or handle.
@@ -148,11 +147,11 @@ You create VMs during the upcoming exercises. In this section, you create an SSH
    ssh-keygen -t RSA -b 2048 -C admin@fabmedical
    ```
 
-3. When asked to save the generated key to a file, enter `.ssh/fabmedical` for the name.
+3. When asked to save the generated key to a file, enter `~/.ssh/fabmedical` for the name.
 
 4. Enter a passphrase when prompted, and **don't forget it**!
 
-5. Because you entered ".ssh/fabmedical", ssh-keygen generates the file in the ".ssh" folder in your user folder, where the cloud shell opens by default.
+5. Because you entered "~/.ssh/fabmedical", ssh-keygen generates the file in the "~/.ssh" folder in your user folder, where the cloud shell opens by default.
 
 6. Keep this cloud shell open and remain in the default directory. You use this shell in later tasks.
 
@@ -210,7 +209,7 @@ In this section, you configure and execute an ARM template that creates all the 
 
    - **Suffix**: Enter a shortened version of your SUFFIX with a max of 3 chars.
    - **VirtualMachineAdminUsernameLinux**: The Linux Build Agent VM admin username (example: `"adminfabmedical"`).
-   - **VirtualMachineAdminPublicKeyLinux**: The Linux Build Agent VM admin ssh public key. You find this value in the `.ssh/fabmedical.pub` file created previously (example: `"ssh-rsa AAAAB3N(...)vPiybQV admin@fabmedical"`).
+   - **VirtualMachineAdminPublicKeyLinux**: The Linux Build Agent VM admin ssh public key. You find this value in the `~/.ssh/fabmedical.pub` file created previously (example: `"ssh-rsa AAAAB3N(...)vPiybQV admin@fabmedical"`).
    - **KubernetesServicePrincipalClientId**: The Kubernetes Cluster Service Principal Client Id. Use the service principal “appId” from a previous step.
    - **KubernetesServicePrincipalClientSecret**: The Kubernetes Cluster Service Principal Client Secret. Use the service principal “password” from a previous step.
    - **KubernetesServicePrincipalObjectId**: The Kubernetes Cluster Service Principal Object Id. Use the service principal “objectId” from a previous step.
@@ -315,7 +314,7 @@ FabMedical has provided starter files for you. They have taken a copy of the web
 
    - Confirm your contact information and select next.
    - Select "Create new account".
-   - Enter a fabmedical-SUFFIX for your account name and select Continue.
+   - Enter a `fabmedical-SUFFIX` for your account name and select Continue.
 
 7. Create an Azure DevOps Project.
 
@@ -548,14 +547,7 @@ In this task, you update the packages and install the Docker engine.
    sudo apt-get upgrade
    ```
 
-7. Install `docker-compose`
-
-   ```bash
-   sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-   sudo chmod +x /usr/local/bin/docker-compose
-   ```
-
-8. When the command has completed, check the Docker version installed by executing this command. The output may look something like that shown in the following screenshot. Note that the server version is not shown yet, because you didn't run the command with elevated privileges (to be addressed shortly).
+7. When the command has completed, check the Docker version installed by executing this command. The output may look something like that shown in the following screenshot. Note that the server version is not shown yet, because you didn't run the command with elevated privileges (to be addressed shortly).
 
    ```bash
    docker version
@@ -563,7 +555,7 @@ In this task, you update the packages and install the Docker engine.
 
    ![In this screenshot of a Cloud Shell window, docker version has been typed and run at the command prompt. Docker version information appears in the window.](media/b4-image28.png)
 
-9. You may check the versions of node.js and npm as well, just for information purposes, using these commands:
+8. You may check the versions of node.js and npm as well, just for information purposes, using these commands:
 
    ```bash
    nodejs --version
@@ -571,13 +563,13 @@ In this task, you update the packages and install the Docker engine.
    npm -version
    ```
 
-10. Install the Angular CLI
+9. Install the Angular CLI
 
     ```bash
     sudo npm install -g @angular/cli
     ```
 
-11. To remove the requirement to use sudo, add your user to the Docker group. You can ignore any errors you see in the output.
+10. To remove the requirement to use sudo, add your user to the Docker group. You can ignore any errors you see in the output.
 
     ```bash
     sudo usermod -aG docker $USER
@@ -585,15 +577,15 @@ In this task, you update the packages and install the Docker engine.
 
     ![In this screenshot of a Cloud Shell window, sudo usermod -aG docker $USER has been typed and run at the command prompt. Errors appear in the window.](media/b4-image29.png)
 
-12. For the user permission changes to take effect, exit the SSH
+11. For the user permission changes to take effect, exit the SSH
     session by typing 'exit', then press \<Enter\>. Reconnect to the build agent
     VM using SSH as you did in the previous task.
 
-13. Repeat the Docker version command, and note the output now shows the server version as well.
+12. Repeat the Docker version command, and note the output now shows the server version as well.
 
     ![In this screenshot of a Cloud Shell window, docker version has been typed and run at the command prompt. Docker version information appears in the window, in addition to server version information.](media/b4-image30.png)
 
-14. Run a few Docker commands:
+13. Run a few Docker commands:
 
     - One to see if there are any containers presently running.
 
@@ -607,7 +599,7 @@ In this task, you update the packages and install the Docker engine.
       docker container ls -a
       ```
 
-15. In both cases, you have an empty list but no errors while running the command. Your build agent is ready with the Docker engine running correctly.
+14. In both cases, you have an empty list but no errors while running the command. Your build agent is ready with the Docker engine running correctly.
 
     ![In this screenshot of a Cloud Shell window, docker container ls has been typed and run at the command prompt, as has the docker container ls -a command.](media/b4-image31.png)
 
@@ -677,6 +669,8 @@ with them on the build agent.
 > as and when needed.
 
 You should follow all steps provided _before_ performing the Hands-on lab.
+
+<!-- References -->
 
 [logo]: https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png
 [devops]: https://dev.azure.com
