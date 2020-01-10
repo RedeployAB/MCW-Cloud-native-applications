@@ -15,9 +15,8 @@
   - [Task 4: Create Docker images](#task-4-create-docker-images)
   - [Task 5: Run a containerized application](#task-5-run-a-containerized-application)
   - [Task 6: Setup environment variables](#task-6-setup-environment-variables)
-  - [Task 7: Run several containers with Docker compose](#task-7-run-several-containers-with-docker-compose)
-  - [Task 8: Push images to Azure Container Registry](#task-8-push-images-to-azure-container-registry)
-  - [Task 9: Setup CI Pipeline to Push Images](#task-9-setup-ci-pipeline-to-push-images)
+  - [Task 7: Push images to Azure Container Registry](#task-7-push-images-to-azure-container-registry)
+  - [Task 8: Setup CI Pipeline to Push Images](#task-8-setup-ci-pipeline-to-push-images)
 - [Exercise 2: Deploy the solution to Azure Kubernetes Service](#exercise-2-deploy-the-solution-to-azure-kubernetes-service)
   - [Task 1: Tunnel into the Azure Kubernetes Service cluster](#task-1-tunnel-into-the-azure-kubernetes-service-cluster)
   - [Task 2: Deploy a service using the Kubernetes management dashboard](#task-2-deploy-a-service-using-the-kubernetes-management-dashboard)
@@ -681,7 +680,7 @@ In this task, you will configure the "web" container to communicate with the API
 
     Enter credentials if prompted.
 
-### Task 8: Push images to Azure Container Registry
+### Task 7: Push images to Azure Container Registry
 
 To run containers in a remote environment, you will typically push images to a Docker registry, where you can store and distribute images. Each service will have a repository that can be pushed to and pulled from with Docker commands. Azure Container Registry (ACR) is a managed private Docker registry service based on Docker Registry v2.
 
@@ -766,7 +765,7 @@ In this task, you will push images to your ACR account, version images with tagg
     docker image pull [LOGINSERVER]/content-web:v1
     ```
 
-### Task 9: Setup CI Pipeline to Push Images
+### Task 8: Setup CI Pipeline to Push Images
 
 In this task, you will use YAML to define a pipeline that builds your Docker
 image and pushes it to your ACR instance automatically.
