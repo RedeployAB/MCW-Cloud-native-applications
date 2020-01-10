@@ -91,7 +91,7 @@ In this task, you use `git` to copy the lab content to your cloud shell so that 
 1. Type the following command and press `<ENTER>`:
 
    ```bash
-   git clone https://github.com/microsoft/MCW-Cloud-native-applications.git
+   git clone https://github.com/RedeployAB/mcw-devops.git
    ```
 
 2. The lab files download.
@@ -101,7 +101,7 @@ In this task, you use `git` to copy the lab content to your cloud shell so that 
 3. We do not need the `.git` folder, and later steps will be less complex if we remove it. Run this command:
 
    ```bash
-   rm -rf MCW-Cloud-native-applications/.git
+   rm -rf mcw-devops/.git
    ```
 
 ### Task 3: Resource Group
@@ -195,7 +195,7 @@ In this section, you configure and execute an ARM template that creates all the 
    > **Note**: If you don't have a cloud shell available, refer back to [Task 1: Setup Azure Cloud Shell](#task-1-setup-azure-cloud-shell).
 
    ```bash
-   cd MCW-Cloud-native-applications/Hands-on\ lab/arm/
+   cd mcw-devops/2-hands-on-lab/arm/
    ```
 
 2. Open the azuredeploy.parameters.json file for editing using Azure Cloud Shell editor.
@@ -235,7 +235,7 @@ In this section, you configure and execute an ARM template that creates all the 
    | uksouth            | UK South            |
    | ukwest             | UK West             |
    | northeurope        | North Europe        |
-   | westeurope         | West Europe         |
+   | **westeurope**     | **West Europe**     |
    | australiaeast      | Australia East      |
    | australiasoutheast | Australia Southeast |
    | brazilsouth        | Brazil South        |
@@ -272,14 +272,14 @@ FabMedical has provided starter files for you. They have taken a copy of the web
 2. Navigate to the FabMedical source code folder and list the contents.
 
    ```bash
-   cd ~/MCW-Cloud-native-applications/Hands-on\ lab/lab-files/developer/
+   cd ~/mcw-devops/2-hands-on-lab/lab-files/developer/
    ll
    ```
 
    > **Important note**: If you will be taking the Infrastructure edition of the lab, instead of using the above instructions, type the following ones:
    >
    > ```bash
-   > cd ~/MCW-Cloud-native-applications/Hands-on\ lab/lab-files/infrastructure/
+   > cd ~/mcw-devops/2-hands-on-lab/lab-files/infrastructure/
    > ll
    > ```
    >
