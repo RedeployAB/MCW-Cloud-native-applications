@@ -4,25 +4,23 @@
 
 <!-- TOC -->
 
-- [Cloud-native applications - Infrastructure edition hands-on lab step-by-step](#cloud-native-applications---infrastructure-edition-hands-on-lab-step-by-step)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Overview](#overview)
-  - [Solution architecture](#solution-architecture)
-  - [Requirements](#requirements)
-  - [Exercise 1: Create and run a Docker application](#exercise-1-create-and-run-a-docker-application)
-    - [Task 1: Test the application](#task-1-test-the-application)
-    - [Task 2: Browsing to the web application](#task-2-browsing-to-the-web-application)
-    - [Task 3: Create Docker images](#task-3-create-docker-images)
-    - [Task 4: Run a containerized application](#task-4-run-a-containerized-application)
-    - [Task 5: Setup environment variables](#task-5-setup-environment-variables)
-    - [Task 6: Run several containers with Docker compose](#task-6-run-several-containers-with-docker-compose)
-    - [Task 7: Push images to Azure Container Registry](#task-7-push-images-to-azure-container-registry)
-    - [Task 8: Setup CI Pipeline to Push Images](#task-8-setup-ci-pipeline-to-push-images)
-  - [Exercise 2: Deploy the solution to Azure Kubernetes Service](#exercise-2-deploy-the-solution-to-azure-kubernetes-service)
-    - [Task 1: Tunnel into the Azure Kubernetes Service cluster](#task-1-tunnel-into-the-azure-kubernetes-service-cluster)
-    - [Task 2: Deploy a service using the Kubernetes management dashboard](#task-2-deploy-a-service-using-the-kubernetes-management-dashboard)
-    - [Task 3: Deploy a service using kubectl](#task-3-deploy-a-service-using-kubectl)
-    - [Task 4: Deploy a service using a Helm chart](#task-4-deploy-a-service-using-a-helm-chart)
+- [Abstract and learning objectives](#abstract-and-learning-objectives)
+- [Overview](#overview)
+- [Solution architecture](#solution-architecture)
+- [Requirements](#requirements)
+- [Exercise 1: Create and run a Docker application](#exercise-1-create-and-run-a-docker-application)
+  - [Task 1: Test the application](#task-1-test-the-application)
+  - [Task 2: Browsing to the web application](#task-2-browsing-to-the-web-application)
+  - [Task 3: Create Docker images](#task-3-create-docker-images)
+  - [Task 4: Run a containerized application](#task-4-run-a-containerized-application)
+  - [Task 5: Setup environment variables](#task-5-setup-environment-variables)
+  - [Task 6: Push images to Azure Container Registry](#task-6-push-images-to-azure-container-registry)
+  - [Task 7: Setup CI Pipeline to Push Images](#task-7-setup-ci-pipeline-to-push-images)
+- [Exercise 2: Deploy the solution to Azure Kubernetes Service](#exercise-2-deploy-the-solution-to-azure-kubernetes-service)
+  - [Task 1: Tunnel into the Azure Kubernetes Service cluster](#task-1-tunnel-into-the-azure-kubernetes-service-cluster)
+  - [Task 2: Deploy a service using the Kubernetes management dashboard](#task-2-deploy-a-service-using-the-kubernetes-management-dashboard)
+  - [Task 3: Deploy a service using kubectl](#task-3-deploy-a-service-using-kubectl)
+  - [Task 4: Deploy a service using a Helm chart](#task-4-deploy-a-service-using-a-helm-chart)
 - [Public IP address](#public-ip-address)
 - [Name to associate with public IP address](#name-to-associate-with-public-ip-address)
 - [Get the resource-id of the public ip](#get-the-resource-id-of-the-public-ip)
@@ -248,9 +246,9 @@ The purpose of this task is to make sure you can run the application successfull
 
 In this task, you will browse to the web application for testing.
 
-1. From the Azure portal select the resource group you created named fabmedical-SUFFIX.
+1. From the Azure portal select the resource group you created named `fabmedical-SUFFIX`.
 
-2. Select the build agent VM named fabmedical-SUFFIX from your list of available resources.
+2. Select the build agent VM named `fabmedical-SUFFIX` from your list of available resources.
 
    ![In this screenshot of your list of available resources, the first item is selected, which has the following values for Name, Type, and Location: fabmedical-soll (a red arrows points to this name), Virtual machine, and East US 2.](media/image54.png)
 
@@ -510,146 +508,7 @@ In this task, you will configure the "web" container to communicate with the API
 
     Enter credentials if prompted.
 
-### Task 6: Run several containers with Docker compose
-
-Managing several containers with all their command line options can become
-difficult as the solution grows. `docker-compose` allows us to declare options
-for several containers and run them together.
-
-1. First, cleanup the existing containers.
-
-   ```bash
-   docker container stop web && docker container rm web
-   docker container stop api && docker container rm api
-   docker container stop mongo && docker container rm mongo
-   ```
-
-2. Navigate to your home directory (where you checked out the content repositories) and create a docker compose file.
-
-   ```bash
-   cd ~
-   vi docker-compose.yml
-   <i>
-   ```
-
-   Type the following as the contents of `docker-compose.yml`:
-
-   ```yaml
-   version: "3.4"
-
-   services:
-     mongo:
-       image: mongo
-       restart: always
-
-     api:
-       build: ./content-api
-       image: content-api
-       depends_on:
-         - mongo
-       environment:
-         MONGODB_CONNECTION: mongodb://mongo:27017/contentdb
-
-     web:
-       build: ./content-web
-       image: content-web
-       depends_on:
-         - api
-       environment:
-         CONTENT_API_URL: http://api:3001
-       ports:
-         - "3000:3000"
-   ```
-
-   Press the Escape key and type ":wq" and then press the Enter key to save and close the file.
-
-   ```text
-   <Esc>
-   :wq
-   <Enter>
-   ```
-
-3. Start the applications with the `up` command.
-
-   ```bash
-   docker-compose -f docker-compose.yml -p fabmedical up -d
-   ```
-
-   ![This screenshot of the console window shows the creation of the network and three containers: mongo, api and web.](media/Ex1-Task6.17.png)
-
-4. Visit the website in the browser; notice that we no longer have any data on the speakers or sessions pages.
-
-   ![Browser view of the web site.](media/Ex1-Task6.18.png)
-
-5. We stopped and removed our previous mongodb container; all the data contained in it has been removed. Docker compose has created a new, empty mongodb instance that must be reinitialized. If we care to persist our data between container instances, docker has several mechanisms to do so. First, we will update our compose file to persist mongodb data to a directory on the build agent.
-
-   ```bash
-   mkdir data
-   vi docker-compose.yml
-   ```
-
-   Update the mongo service to mount the local data directory onto to the `/data/db` volume in the docker container.
-
-   ```yaml
-   mongo:
-     image: mongo
-     restart: always
-     volumes:
-       - ./data:/data/db
-   ```
-
-   The result should look similar to the following screenshot:
-
-   ![This screenshot of the VIM edit window shows the resulting compose file.](media/Ex1-Task6.19.png)
-
-6. Next, we will add a second file to our composition so that we can initialize the mongodb data when needed.
-
-   ```bash
-   vi docker-compose.init.yml
-   ```
-
-   Add the following as the content:
-
-   ```yaml
-   version: "3.4"
-
-   services:
-     init:
-       build: ./content-init
-       image: content-init
-       depends_on:
-         - mongo
-       environment:
-         MONGODB_CONNECTION: mongodb://mongo:27017/contentdb
-   ```
-
-7. To reconfigure the mongodb volume, we need to bring down the mongodb service first.
-
-   ```bash
-   docker-compose -f docker-compose.yml -p fabmedical down
-   ```
-
-   ![This screenshot of the console window shows the running containers stopping.](media/Ex1-Task6.21.png)
-
-8. Now run `up` again with both files to update the mongodb configuration and run the initialization script.
-
-   ```bash
-   docker-compose -f docker-compose.yml -f docker-compose.init.yml -p fabmedical up -d
-   ```
-
-9. Check the data folder to see that mongodb is now writing data files to the host.
-
-   ```bash
-   ls ./data/
-   ```
-
-   ![This screenshot of the console window shows the output of the data folder.](media/hol-2019-10-12_09-42-16.png)
-
-10. Check the results in the browser. The speaker and session data are now available.
-
-    ![A screenshot of the sessions page.](media/Ex1-Task6.24.png)
-
-### Task 7: Push images to Azure Container Registry
+### Task 6: Push images to Azure Container Registry
 
 To run containers in a remote environment, you will typically push images to a Docker registry, where you can store and distribute images. Each service will have a repository that can be pushed to and pulled from with Docker commands. Azure Container Registry (ACR) is a managed private Docker registry service based on Docker Registry v2.
 
@@ -734,7 +593,7 @@ In this task, you will push images to your ACR account, version images with tagg
     docker image pull [LOGINSERVER]/content-web:v1
     ```
 
-### Task 8: Setup CI Pipeline to Push Images
+### Task 7: Setup CI Pipeline to Push Images
 
 In this task, you will use YAML to define a pipeline that builds your Docker
 image and pushes it to your ACR instance automatically.
@@ -1546,7 +1405,7 @@ In this task, you will use Azure DevOps to automate the process for deploying th
 
 In this task, you will access and review the various logs and dashboards made available by Azure Monitor for Containers.
 
-1. From the Azure Portal, select the resource group you created named fabmedical-SUFFIX, and then select your AKS cluster.
+1. From the Azure Portal, select the resource group you created named `fabmedical-SUFFIX`, and then select your AKS cluster.
 
    ![In this screenshot, the resource group was previously selected and the AKS cluster is selected.](media/Ex2-Task8.1.png)
 
