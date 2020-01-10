@@ -1,4 +1,4 @@
-# Cloud-native applications before the hands-on lab setup guide
+# Hands-on lab setup guide
 
 ## Contents
 
@@ -16,6 +16,7 @@
   - [Task 8: Connect securely to the build agent](#task-8-connect-securely-to-the-build-agent)
   - [Task 9: Complete the build agent setup](#task-9-complete-the-build-agent-setup)
   - [Task 10: Clone Repositories to the Build Agent](#task-10-clone-repositories-to-the-build-agent)
+- [Next steps](#next-steps)
 
 <!-- /TOC -->
 
@@ -668,9 +669,10 @@ with them on the build agent.
 > connection. The lab instructs you to open additional cloud shell sessions
 > as and when needed.
 
-You should follow all steps provided _before_ performing the Hands-on lab.
+## Next steps
+
+When you have followed all the steps you are ready to perform the hands-on lab. You can now proceed with [performing the lab](README.md#performing-the-lab).
 
 <!-- References -->
 
-[logo]: https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png
 [devops]: https://dev.azure.com
