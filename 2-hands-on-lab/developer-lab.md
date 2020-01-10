@@ -1457,9 +1457,9 @@ In this task, you will verify that you can browse to the web service you have de
 
 3. You will see the web application in your browser and be able to select the Speakers and Sessions links to view those pages without errors. The lack of errors means that the web application is correctly calling the API service to show the details on each of those pages.
 
-   ![In this screenshot of the Contoso Neuro 2017 web application, Speakers has been selected, and sample speaker information appears at the bottom.](media/image114.png)
+   ![In this screenshot of the Contoso Neuro 2020 web application, Speakers has been selected, and sample speaker information appears at the bottom.](media/image114.png)
 
-   ![In this screenshot of the Contoso Neuro 2017 web application, Sessions has been selected, and sample session information appears at the bottom.](media/image115.png)
+   ![In this screenshot of the Contoso Neuro 2020 web application, Sessions has been selected, and sample session information appears at the bottom.](media/image115.png)
 
 ### Task 7: Configure Continuous Delivery to the Kubernetes Cluster
 
@@ -1758,7 +1758,7 @@ In this task, you will restart containers and validate that the restart does not
 
    ![In the Services box, a red arrow points at the hyperlinked external endpoint for the web service. ](media/image112.png)
 
-   ![The Stats page is visible in this screenshot of the Contoso Neuro 2017 web application.](media/image123.png)
+   ![The Stats page is visible in this screenshot of the Contoso Neuro 2020 web application.](media/image123.png)
 
 2. From the navigation menu, select Workloads>Deployments. From Deployments list, select the API deployment.
 
@@ -1772,7 +1772,7 @@ In this task, you will restart containers and validate that the restart does not
 
 5. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors, but you will see the api host name change between the two api pod instances periodically. The task id and pid might also change between the two api pod instances.
 
-   ![On the Stats page in the Contoso Neuro 2017 web application, two different api host name values are highlighted.](media/image126.png)
+   ![On the Stats page in the Contoso Neuro 2020 web application, two different api host name values are highlighted.](media/image126.png)
 
 6. After refreshing enough times to see that the hostName value is changing, and the service remains healthy, return to the Replica Sets view for the API. From the navigation menu, select Replica Sets under Workloads and select the API replica set.
 
