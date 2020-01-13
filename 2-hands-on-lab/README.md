@@ -6,7 +6,7 @@ At the end of this lab, you will be better able to build and deploy containerize
 
 ## Getting started
 
-To prepare your environment for the lab, start by going through the [setup guide](setup-guide.md).
+To prepare your environment for the lab, start by going through the [setup guide](0-setup-guide.md).
 
 ## Performing the lab
 
